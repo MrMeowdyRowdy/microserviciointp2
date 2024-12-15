@@ -16,6 +16,8 @@ Copiar código
   "room_type": "Single",
   "status": "available"
 }
+
+
 Actualizar Estado de Habitación:
 
 Endpoint: PATCH http://localhost:5002/rooms/{room_id}

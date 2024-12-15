@@ -18,6 +18,17 @@ class Room(db.Model):
 with app.app_context():
     db.create_all()
 
+    # Insertar datos de prueba si no existen
+    if not Room.query.first():
+        sample_rooms = [
+            Room(room_number=101, room_type="Single", status="available"),
+            Room(room_number=102, room_type="Double", status="maintenance"),
+            Room(room_number=201, room_type="Suite", status="available"),
+        ]
+        db.session.add_all(sample_rooms)
+        db.session.commit()
+        print("Datos de prueba insertados.")
+
 # Endpoint para registrar una nueva habitación
 @app.route('/rooms', methods=['POST'])
 def register_room():
